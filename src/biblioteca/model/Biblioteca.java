@@ -1,5 +1,6 @@
 
 package biblioteca.model;
+import biblioteca.dao.EmprestimoDAO;
 import biblioteca.view.TelaLivro;
 import biblioteca.dao.LivroDAO;
 import biblioteca.dao.UsuarioDAO;
@@ -12,12 +13,13 @@ public class Biblioteca {
     
     public static void main(String[] args) {
         
+        EmprestimoDAO empDAO = new EmprestimoDAO();
+        empDAO.listarEmprestimo();
         
-        SwingUtilities.invokeLater(()-> {
-          TelaLivro tela = new TelaLivro();
-          
-          
-        });
+       // SwingUtilities.invokeLater(()-> {
+        //  TelaLivro tela = new TelaLivro(); });
+        
+        
                 
       /* LivroDAO dao = new LivroDAO();
       UsuarioDAO dao = new UsuarioDAO();
