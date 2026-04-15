@@ -10,6 +10,7 @@ package biblioteca.service;
  */
 import biblioteca.dao.LivroDAO;
 import biblioteca.model.Livro;
+import java.util.List;
 
 public class LivroService {
     private LivroDAO dao = new LivroDAO();
@@ -32,6 +33,16 @@ public class LivroService {
     }
    Livro livro = new Livro(titulo, autor, ano);
    dao.inserir(livro);
+
    return "Livro salvo com sucesso! ";
+    
     }
-}
+    
+     public List<Livro> listar(){
+       return new LivroDAO().listar();
+     }
+     
+    
+    }
+    
+

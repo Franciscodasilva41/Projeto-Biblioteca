@@ -4,7 +4,7 @@ package biblioteca.model;
 public class Usuario {
     private String nome;
     private String telefone;
-    private final int numCadastro;
+    private  int numCadastro;
     private static int contador = 1;
     
     public Usuario(String nome,String telefone){
@@ -20,6 +20,10 @@ public class Usuario {
     }
     public String getNome() {
         return nome;
+    }
+
+    public void setNumCadastro(int numCadastro) {
+        this.numCadastro = numCadastro;
     }
 
     public void setNome(String nome) {

@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/OneDrive/Documentos/NetBeansProjects/biblioteca/src/biblioteca/model/Biblioteca.java</file>
-            <file>file:/C:/Users/Usuario/OneDrive/Documentos/NetBeansProjects/biblioteca/src/biblioteca/service/LivroService.java</file>
-            <file>file:/C:/Users/Usuario/OneDrive/Documentos/NetBeansProjects/biblioteca/src/biblioteca/view/TelaLivro.java</file>
+            <file>file:/C:/Users/Usuario/OneDrive/Documentos/ProjetoJava/Projeto-Biblioteca/src/biblioteca/model/Biblioteca.java</file>
+            <file>file:/C:/Users/Usuario/OneDrive/Documentos/ProjetoJava/Projeto-Biblioteca/src/biblioteca/view/TelaEmprestimo.java</file>
+            <file>file:/C:/Users/Usuario/OneDrive/Documentos/ProjetoJava/Projeto-Biblioteca/src/biblioteca/service/EmprestimoService.java</file>
+            <file>file:/C:/Users/Usuario/OneDrive/Documentos/ProjetoJava/Projeto-Biblioteca/src/biblioteca/view/TelaLivro.java</file>
         </group>
     </open-files>
 </project-private>

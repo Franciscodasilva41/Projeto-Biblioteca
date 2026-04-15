@@ -8,6 +8,10 @@ public class Livro {
     private int anoPublicacao;
     private static int contador = 1;
     private int id;
+
+    public void setId(int id) {
+        this.id = id;
+    }
     private int idUser = 0;
     private boolean disponivel;
 
@@ -35,16 +39,14 @@ public class Livro {
      this.autor = autor;
      this.anoPublicacao = anoPublicacao;
      this.disponivel = true;
-     this.id = contador ++;
      
 
     }
-    public Livro(int id, String titulo, String autor, int anoPublicacao, boolean disponivel){
+    public Livro(int id, String titulo, String autor, int anoPublicacao){
     this.titulo = titulo;
      this.autor = autor;
      this.anoPublicacao = anoPublicacao;
-     this.disponivel = true;
-     this.id = id;
+    
      
     }
 

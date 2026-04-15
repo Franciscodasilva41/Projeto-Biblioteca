@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class UsuarioDAO {
@@ -34,7 +36,8 @@ public class UsuarioDAO {
       }
   }
   
-  public void listar(){
+  public List<Usuario> listar(){
+      List<Usuario> lista = new ArrayList<>();
   String sql = "SELECT * FROM usuario ";
   
   try{
@@ -43,18 +46,18 @@ public class UsuarioDAO {
     ResultSet rs = st.executeQuery(sql);
     
     while(rs.next()){
-        System.out.println("ID: "+ rs.getInt("id")+ "  Nome: "+ rs.getString("nome")
-                +" Telefone: "+ rs.getString("telefone"));
-    
+        Usuario u = new Usuario( rs.getString("nome"),rs.getString("telefone"));
+        u.setNumCadastro(rs.getInt("id"));
+        lista.add(u);
     }
     rs.close();
     st.close();
     conn.close();
   
   }catch (Exception e){
-      System.out.println("Erro ao listar: "+ e.getMessage());
+        e.printStackTrace();
   }
-  
+  return lista;
   }
   public void atualizar(Usuario u){
   

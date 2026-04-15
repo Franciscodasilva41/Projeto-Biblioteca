@@ -94,4 +94,20 @@ public class EmprestimoDAO {
        e.printStackTrace();
        }
      }
+
+    public boolean livroJaEmprestado(int idLivro) {
+        String sql = "SELECT COUNT(*)FROM emprestimo WHERE id_Livro = ? AND data_devolucao IS NULL";
+        try(Connection conn = Conexao.conectar()){
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, idLivro);
+        
+        ResultSet rs = ps.executeQuery();
+        if(rs.next()){
+          return rs.getInt(1)> 0;
+        }
+        }catch(Exception e){
+        e.printStackTrace();
+        }
+        return false;
+    }
 }

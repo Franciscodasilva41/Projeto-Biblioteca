@@ -14,6 +14,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LivroDAO {
     
@@ -36,31 +38,31 @@ public class LivroDAO {
     
     }
     
-    public void listar(){
-        
-    String sql = "SELECT * FROM livro";
+    public List<Livro> listar(){
+     List<Livro> lista = new ArrayList<>();  
     
+     String sql = "SELECT * FROM livro";  
     try(
         Connection conn = Conexao.conectar();
-        Statement st = conn.createStatement();
+          
+        Statement st = conn.createStatement();   
         ResultSet rs = st.executeQuery(sql);){
        while(rs.next()){
          Livro l = new Livro(
-        rs.getInt("id"),
+        
      rs.getString("titulo"),
       rs.getString("autor"),
-rs.getInt("ano_publicacao"),
-  rs.getBoolean("disponivel"));
-         
-           System.out.println(
-                   "Livro: "+ l.getTitulo()+
-                   "| Autor: "+l.getAutor()+
-                   "| Ano publicaçâo: "+l.getAnoPublicacao()+
-                   "| Disponivel: "+l.isDisponivel());
+ rs.getInt("ano_publicacao")
+  );
+         l.setId(rs.getInt("id"));
+         lista.add(l);
+          
        }
+       conn.close();
     }catch(Exception e){
-            System.out.println("Erro ao listar" + e.getMessage());
+            e.printStackTrace();
             }
+     return lista;
     }
     
 public void atualizar(Livro l){
