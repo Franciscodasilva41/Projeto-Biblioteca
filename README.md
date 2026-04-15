@@ -28,6 +28,7 @@ Projeto desenvolvido em Java utilizando JDBC e MySQL para gerenciamento de uma b
  # Autor
  Francisco da Silva Soares do Nascimento
 
- # Imagem da interface de cadastro de Livro
- <img width="1106" height="440" alt="TelaLivro" src="https://github.com/user-attachments/assets/3bb2992f-4dbf-421c-bcdf-73215cc02217" />
+ # Imagem da interface de Menu das Funções
+ <img width="800" height="423" alt="telaMenu" src="https://github.com/user-attachments/assets/c734ebae-c351-4fa7-9636-4e218bc584cf" />
+
 
