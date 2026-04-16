@@ -28,7 +28,8 @@ Projeto desenvolvido em Java utilizando JDBC e MySQL para gerenciamento de uma b
  # Autor
  Francisco da Silva Soares do Nascimento
 
- # Imagem da interface de Menu das Funções
- <img width="800" height="423" alt="telaMenu" src="https://github.com/user-attachments/assets/c734ebae-c351-4fa7-9636-4e218bc584cf" />
+ # Imagem da interface de Menu das Funções 
+ <img width="1366" height="768" alt="telaFinal" src="https://github.com/user-attachments/assets/955a3ff4-4131-45c4-b3cb-6a0a17236918" />
+
 
 
