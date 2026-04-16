@@ -10,10 +10,7 @@ package biblioteca.dao;
  */
 import biblioteca.model.Livro;
 import biblioteca.database.Conexao;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,4 +83,20 @@ public void atualizar(Livro l){
     }
     
 }
+  public boolean excluir(int id){
+   String sql = "DELETE FROM livro WHERE id = ?";
+   
+   try(Connection conn = Conexao.conectar();
+       PreparedStatement stmt = conn.prepareStatement(sql)){
+   stmt.setInt(1, id);
+   int linhasAfetadas = stmt.executeUpdate();
+   return linhasAfetadas > 0;
+   
+   }catch(SQLException e){
+     e.printStackTrace();
+     return false;
+   }
+   
+   
+  }
 }

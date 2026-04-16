@@ -28,4 +28,14 @@ public class UsuarioService {
     public List<Usuario> listar(){
     return new UsuarioDAO().listar();
     }
+    
+    public boolean deletar(int id){
+    
+      if(id <= 0){
+      
+          System.out.println("ID Inávalido!");
+          return false;
+      }
+      return dao.deletar(id);
+    }
 }

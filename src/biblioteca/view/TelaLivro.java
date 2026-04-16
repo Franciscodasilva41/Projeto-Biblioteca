@@ -21,6 +21,7 @@ public class TelaLivro extends JFrame {
     JTextField txtTitulo;
     JTextField txtAutor;
     JTextField txtAno;
+    JTextField txtId;
     
     JTable tabela;
     DefaultTableModel modelo;
@@ -30,7 +31,11 @@ public class TelaLivro extends JFrame {
       setTitle("Cadastro de Livro");
       setSize(600,400);
       setLayout(null);
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+      
+      txtId = new JTextField();
+      txtId.setBounds(50,250,200,25);
+      add(txtId);
       
       txtTitulo = new JTextField();
       txtTitulo.setBounds(50,30,200,25);
@@ -56,9 +61,18 @@ public class TelaLivro extends JFrame {
       lblAno.setBounds(50,120,100,20);
       add(lblAno);
       
+      JLabel lblId = new JLabel("Digite o ID para excluir:");
+      lblId.setBounds(80, 230, 200, 20);
+      add(lblId);
+      
+      
       JButton btnSalvar = new JButton("Salvar");
-      btnSalvar.setBounds(60,200,100,30);
+      btnSalvar.setBounds(90,190,100,30);
       add(btnSalvar);
+      
+      JButton btnExcluir = new JButton("Excluir");
+      btnExcluir.setBounds(90,280,100,30);
+      add(btnExcluir);
       
       modelo = new DefaultTableModel();
       modelo.addColumn("ID");
@@ -81,9 +95,32 @@ public class TelaLivro extends JFrame {
      limparCampos();
      
        });
+       btnExcluir.addActionListener(e -> {  
+           try{
+      int id = Integer.parseInt(txtId.getText());
+      int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir? ",
+              "Confirmar",JOptionPane.YES_NO_OPTION);
+           if(confirm == JOptionPane.YES_OPTION){   
+           boolean sucesso = service.excluirLivro(id);
+              
+      if(sucesso){
+      JOptionPane.showMessageDialog(null,"Livro excluido com sucesso!");
       carregarLivros();
-      setVisible(true);
-    }
+      limparCampos();
+      
+      }else{
+          JOptionPane.showMessageDialog(null, "Livro não encontrado");
+      }
+           } 
+           }catch(NumberFormatException ex){
+           JOptionPane.showMessageDialog(null,"Digite um ID válido! ");
+           }
+    } );
+       carregarLivros();
+      setVisible(true);         
+               } 
+      
+     
     public void limparCampos(){
         
     txtTitulo.setText("");

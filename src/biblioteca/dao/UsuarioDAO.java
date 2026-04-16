@@ -6,10 +6,7 @@ package biblioteca.dao;
 
 import biblioteca.model.Usuario;
 import biblioteca.database.Conexao;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,22 +76,26 @@ public class UsuarioDAO {
     }
    
   }
-  public void deletar(int id){
+  public boolean deletar(int id){
     String sql = "DELETE FROM usuario WHERE id = ?";
     
     try{
      Connection conn = Conexao.conectar();
      PreparedStatement ps = conn.prepareStatement(sql);
      ps.setInt(1, id);
-     ps.executeUpdate();
-        System.out.println("Usuario removido!");
+     int linhasAfetadas = ps.executeUpdate();
+      ps.close();
+      conn.close();
+        return linhasAfetadas > 0;
         
-        ps.close();
-        conn.close();
-     
-    }catch(Exception e){
-        System.out.println("Erro ao remover: "+ e.getMessage());
+     }catch(SQLException e){
+       e.printStackTrace();
+       return false;
     }
   }
   
 }
+   
+        
+     
+   

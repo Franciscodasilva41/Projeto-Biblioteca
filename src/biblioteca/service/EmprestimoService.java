@@ -9,6 +9,8 @@ package biblioteca.service;
  * @author Usuario
  */
 import biblioteca.dao.EmprestimoDAO;
+import biblioteca.model.Emprestimo;
+import java.util.List;
 public class EmprestimoService {
     
     private EmprestimoDAO dao = new EmprestimoDAO();
@@ -22,5 +24,8 @@ public class EmprestimoService {
     }
     public void devolverLivro(int idEmprestimo, int idLivro){
     dao.devolver(idEmprestimo, idLivro);
+    }
+    public List<Emprestimo> listar(){
+     return new EmprestimoDAO().listarEmprestimo();
     }
 }

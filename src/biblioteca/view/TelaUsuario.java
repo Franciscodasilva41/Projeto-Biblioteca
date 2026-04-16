@@ -18,7 +18,7 @@ import biblioteca.dao.UsuarioDAO;
 
 public class TelaUsuario extends JFrame{
     
-    
+    JTextField txtId;
     JTextField txtNome;
     JTextField txtTelefone;
     
@@ -29,7 +29,12 @@ public class TelaUsuario extends JFrame{
     setTitle("Cadastro Usuario");
     setSize(600,400);
     setLayout(null);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    
+    txtId = new JTextField();
+    txtId.setBounds(50,170,200,25);
+    add(txtId);
+    
     
     txtNome = new JTextField();
     txtNome.setBounds(50,20,200,25);
@@ -47,9 +52,18 @@ public class TelaUsuario extends JFrame{
     lblTelefone.setBounds(50,40,100,20);
     add(lblTelefone);
     
+    JLabel lblId = new JLabel("Digite o ID a ser excluido:");
+    lblId.setBounds(80, 140, 200, 20);
+    add(lblId);
+    
     JButton btnSalvar = new JButton("Salvar");
-    btnSalvar.setBounds(80, 140,120, 30);
+    btnSalvar.setBounds(80, 100,120, 30);
     add(btnSalvar);
+    
+    JButton btnExcluir = new JButton("Excluir");
+    btnExcluir.setBounds(80,200,120,30);
+    add(btnExcluir);
+    
     modelo = new DefaultTableModel();
     modelo.addColumn("ID");
     modelo.addColumn("Nome");
@@ -77,6 +91,28 @@ public class TelaUsuario extends JFrame{
         JOptionPane.showMessageDialog(null,ex.getMessage());
         }
      
+    });
+    
+    btnExcluir.addActionListener(e ->{
+        try{
+        int id = Integer.parseInt(txtId.getText());
+        int confirm = JOptionPane.showConfirmDialog(null, " Tem certeza que deseja excluir? ",
+                "Confirmar", JOptionPane.YES_NO_OPTION);
+        if(confirm == JOptionPane.YES_OPTION){
+        boolean sucesso = service.deletar(id);
+        
+        if(sucesso){
+        JOptionPane.showMessageDialog(null,"Usuario excluido com sucesso! ");
+        carregarUsuarios();
+        limparCampos();
+        
+          }else{
+              JOptionPane.showMessageDialog(null,"Livro não encontrado");
+                }
+         }
+        }catch(Exception ex){
+                JOptionPane.showMessageDialog(null,"Digite um ID válido! ");
+            }
     });
     carregarUsuarios();
     setVisible(true);

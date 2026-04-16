@@ -4,7 +4,11 @@
  */
 package biblioteca.dao;
 import java.sql.*;
+
 import biblioteca.database.Conexao;
+import java.util.ArrayList;
+import java.util.List;
+import biblioteca.model.Emprestimo;
 
 
 /**
@@ -69,7 +73,9 @@ public class EmprestimoDAO {
        e.printStackTrace();
        }
      }
-     public void listarEmprestimo(){
+     public List<Emprestimo> listarEmprestimo(){
+         List<Emprestimo> lista = new ArrayList<>();
+         
        String sql = "SELECT * FROM emprestimo";
        
        try(Connection conn = Conexao.conectar();
@@ -77,22 +83,21 @@ public class EmprestimoDAO {
            ResultSet rs = stmt.executeQuery()){
        
          while(rs.next()){
-         int id = rs.getInt("id");
-         int idUsuario = rs.getInt("id_usuario");
-         int idLivro = rs.getInt("id_livro");
-         Timestamp dataEmprestimo = rs.getTimestamp("data_emprestimo");
-         Timestamp dataDevolucao = rs.getTimestamp("data_devolucao");
-             System.out.println("ID: "+ id);
-             System.out.println("Usuario: "+ idUsuario);
-             System.out.println("Livro: "+ idLivro);
-             System.out.println("Data Emprestimo: "+ dataEmprestimo);
-             System.out.println("Data Devolução: "+ dataDevolucao);
-             System.out.println("------------------------------------------");
-             
+             Emprestimo emp = new Emprestimo(
+        
+         rs.getInt("id_usuario"),
+         rs.getInt("id_livro"),
+        rs.getTimestamp("data_emprestimo"),
+         rs.getTimestamp("data_devolucao")
+             );
+           emp.setId(rs.getInt("id")); 
+           lista.add(emp);
          }
+         conn.close();
        }catch(SQLException e){
        e.printStackTrace();
        }
+       return lista;
      }
 
     public boolean livroJaEmprestado(int idLivro) {

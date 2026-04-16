@@ -42,6 +42,13 @@ public class LivroService {
        return new LivroDAO().listar();
      }
      
+    public boolean excluirLivro(int id){
+    if(id <= 0){
+        throw new IllegalArgumentException("ID Inválido! ");
+        
+    }
+    return dao.excluir(id);
+    }
     
     }
     

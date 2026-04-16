@@ -7,13 +7,60 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.io.PrintWriter;
 import java.io.FileWriter;
+import java.sql.Timestamp;
 import java.util.Scanner;
 
 public class Emprestimo {
     
     private ArrayList<Livro>listaLivro = new ArrayList();
     private  ArrayList<Usuario>listaUser = new ArrayList();
+    int id;
+    int idUsuario;
+    int idLivro;
+    Timestamp dataEmprestimo;
+    Timestamp dataDevolucao;
+
+   
+    public Emprestimo(int idUsuario, int idLivro, Timestamp dataEmprestimo, Timestamp dataDevolucao ){
+        
+       this.idUsuario = idUsuario;
+       this.idLivro = idLivro;
+       this.dataEmprestimo = dataEmprestimo;
+       this.dataDevolucao = dataDevolucao;
+        
+    }
+
+    public Timestamp getDataEmprestimo() {
+        return this.dataEmprestimo;
+    }
+
+    public Timestamp getDataDevolucao() {
+        return this.dataDevolucao;
+    }
+
+    public int getIdUsuario() {
+        return this.idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public int getIdLivro() {
+        return this.idLivro;
+    }
+
+    public void setIdLivro(int idLivro) {
+        this.idLivro = idLivro;
+    }
     
+    public void setId(int id) {
+        this.id = id;
+    }
+    public int getId(){
+        
+      return this.id;
+    }
     public void mostarMenu(){
      System.out.println("======= Menu ========");
                 System.out.println("     ");
